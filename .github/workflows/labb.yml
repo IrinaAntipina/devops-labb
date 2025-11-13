@@ -7,16 +7,20 @@ on:
   pull_request:
     branches: [ "main" ]
 
-  workflow-dispatch:   
-    
+  workflow_dispatch:   
 
+    inputs:
+      environment:
+        description: 'Choose environment'
+        required: true
+        default: 'development'
+        type: string
 
 jobs:
   show-input:
     runs-on: ubuntu-latest
     steps:
       - name: Display input value
-        run: 
-        echo "Selected environment: ${{ github.event.inputs.environment }}"
+        run: echo "Selected environment: ${{ github.event.inputs.environment }}"
 
 
