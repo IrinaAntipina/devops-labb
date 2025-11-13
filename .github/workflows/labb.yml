@@ -14,7 +14,10 @@ on:
         description: 'Choose environment'
         required: true
         default: 'development'
-        type: string
+        type: choice
+        options:
+          - dev
+          - prod
 
 jobs:
   show-input:
@@ -22,5 +25,11 @@ jobs:
     steps:
       - name: Display input value
         run: echo Selected environment is ${{ github.event.inputs.environment }}
+      - name: dev step
+        if: ${{ github.event.inputs.environment == 'dev' }}
+        run: echo This runs only for dev
+      - name: prod step
+        if: ${{ github.event.inputs.environment == 'prod' }}
+        run: echo This runs only forr prod
 
 
