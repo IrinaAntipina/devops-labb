@@ -1,0 +1,22 @@
+name: Lab Workflow
+
+on:
+
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow-dispatch:   
+    
+
+
+jobs:
+  show-input:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display input value
+        run: 
+        echo "Selected environment: ${{ github.event.inputs.environment }}"
+
+
